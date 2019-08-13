@@ -32,6 +32,12 @@
 
 install requirements.txt
 
+下载词向量包。
+
+http://nlp.stanford.edu/data/glove.6B.zip
+
+解压到data文件夹。
+
 cd ..\run
 
 python sif_embedding.py
