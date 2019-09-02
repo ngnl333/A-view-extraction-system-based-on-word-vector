@@ -44,3 +44,8 @@ Then you can get a form.
 
 The table shows the views published by people or organizations in the article.
 
+***
+
+You can also import the project directly into pycharm and run the sif_embedding.py file.
+Because this project was developed in pycharm.
+
