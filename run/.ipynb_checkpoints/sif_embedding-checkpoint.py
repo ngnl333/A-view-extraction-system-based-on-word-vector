@@ -101,7 +101,7 @@ result.append(sorted(list(set(temp.copy()))))
 # print('result = ',result)
 
 
-##Find which sentence have 'say'
+##查找哪个句子里面有say
 index=[]
 for i in range(len(sentences)):
     for x in wordsMeanSay:
@@ -149,29 +149,6 @@ for i in range(len(sentencesBlock)):
 # print('label = ',label)
 
 
-def delete_extra_words(temprow:list,sentencesBlock:str,wordsMeanSay):
-    temp={}
-    for x in wordsMeanSay:
-        index=sentencesBlock.find(x)
-        if index == -1:
-            continue
-        else:
-            for y in temprow:
-                person_index=sentencesBlock.find(y)
-                if person_index==-1:
-                    return temp
-                else:
-                    # print('x = ',x)
-                    v=abs(person_index - index)
-                    temp[y]=v
-
-                    continue
-    # print('dict = ',temp)
-    if temp:
-        inverse = [(value, key) for key, value in temp.items()]
-        # print(min(inverse)[1])
-        return  min(inverse)[1]
-
 temprow=[]
 temprow2=[]
 rows=[]
@@ -182,21 +159,12 @@ for i in range(len(label)):
         elif label[i][x][1] == 'PERSON':
             temprow.append(label[i][x][0])
         # else: temprow.append('')
-
-
-    # print(temprow2.copy())
-
-    x=delete_extra_words(temprow,sentencesBlock[i],wordsMeanSay)
-    # temprow2.append(' , '.join(temprow))
-    temprow2.append(x)
+    temprow2.append(' , '.join(temprow))
     temprow2.append(sentencesBlock[i])
-
     rows.append(temprow2.copy())
     temprow.clear()
     temprow2.clear()
 # print('rows = \n',rows)
-
-
 
 print(tabulate(rows, headers=['Person / Org','View'], tablefmt="fancy_grid"))
 
